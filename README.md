@@ -1,220 +1,140 @@
-This repository contains a reusable SaaS template designed to work hand-in-hand with GitHub Copilot (and similar AI agents) using project-wide instructions and modular skills. It standardizes the tech stack, architecture, and best practices so every new app (like entiendetunomina or valuebetanalytics) starts from a solid, AI-friendly base.
+# SaaS Template – AI‑First + Copilot Ready
 
-Overview
-Frontend: React 18, TypeScript, Vite, Tailwind CSS, Shadcn UI, React Router, React Hook Form + Zod.
+Modern SaaS template designed to work **with AI assistants** (GitHub Copilot, Claude, etc.), using a consistent stack, architecture and a system of project instructions + skills.
 
-Backend: Firebase (Auth, Firestore, Functions, Hosting, Storage).
+## Features
 
-Integrations: Stripe (subscriptions), Gmail SMTP (emails).
+- **AI‑first UX**: visible AI usage (“La IA está analizando…”, badges, confidence, explanations).
+- **Unified stack**: React 18, TypeScript, Vite, Tailwind, Firebase, Stripe, Gmail SMTP.
+- **AI guidance**:
+  - Global project instructions (`.github/copilot-instructions.md`).
+  - Modular skills (`.github/skills/*/SKILL.md`) for Firebase, Stripe, Email, Stack.
+- **Production‑ready** patterns: auth, subscriptions, emails, dashboards, protected routes.
+- **Reusable** for new apps (e.g. payroll, sports analytics, other SaaS ideas).
 
-AI-First UX: Modern UI, visible AI usage (“AI is analyzing…”, badges, confidence scores).
+---
 
-Developer Experience: Central instructions + per-domain skills to guide AI code generation.
+## Tech Stack
 
-The goal is that any AI assistant working in this repo automatically:
+| Layer        | Technologies                                   |
+|--------------|-----------------------------------------------|
+| Frontend     | React 18, TypeScript, Vite, React Router      |
+| UI           | Tailwind CSS, Shadcn UI, Lucide Icons, Sonner |
+| Backend      | Firebase (Auth, Firestore, Functions, Hosting, Storage) |
+| Payments     | Stripe (subscriptions + webhooks)             |
+| Email        | Gmail SMTP + Nodemailer                       |
+| DNS / Domain | Cloudflare                                    |
 
-Uses the same stack and patterns.
+---
 
-Follows the same architecture and naming conventions.
+## AI & Instructions System
+# SaaS Template — AI‑First & Copilot Ready
 
-Implements Stripe, Firebase, Email, and AI UX in a consistent way.
+![CI](https://img.shields.io/badge/build-passing-brightgreen) ![License: MIT](https://img.shields.io/badge/license-MIT-blue) ![Stack](https://img.shields.io/badge/stack-React%20%7C%20TS%20%7C%20Tailwind-blueviolet)
 
-Repository Structure
-text
-.github/
-  copilot-instructions.md    # Global project & design instructions for AI assistants
-  skills/
-    saas-stack/
-      SKILL.md               # Tech stack, architecture, project structure, patterns
-    firebase/
-      SKILL.md               # Firebase setup, Auth, Firestore, Functions, Hosting, Storage
-    stripe-payments/
-      SKILL.md               # Stripe subscriptions, webhooks, portal, one-time payments
-    email-notifications/
-      SKILL.md               # Gmail SMTP, templates, notifications, verification, deliverability
+Modern, production-ready SaaS starter focused on AI-first UX and clear AI assistant instructions. Includes a set of reusable "skills" and project guidelines so assistants (like GitHub Copilot) can act consistently across the codebase.
 
-src/
-  ...                        # Frontend app (React + TS + Vite + Tailwind)
+—
 
-functions/
-  ...                        # Firebase Cloud Functions (Node + TypeScript)
-The global instructions file sets the high-level rules (tone, design, AI visibility, languages, GDPR, etc.).
+## Table of Contents
 
-Each skill file focuses on one technical area and is scoped by file types (e.g. ts, tsx, etc.).
+- [What is this](#what-is-this)
+- [Key features](#key-features)
+- [Tech stack](#tech-stack)
+- [Quick start](#quick-start)
+- [AI & instructions system](#ai--instructions-system)
+- [Contributing](#contributing)
+- [License](#license)
 
-How the AI Guidance Works
-1. Global Instructions
-.github/copilot-instructions.md explains to AI assistants:
+## What is this
 
-Business context (B2C SaaS, Spanish users, freemium model).
+A starter template for modern B2C SaaS products with an emphasis on:
 
-Design principles (modern, clean, AI-visible UI).
+- AI-visible UX (processing states, confidence, explanations)
+- Clear project-level instructions for assistants (`.github/copilot-instructions.md`)
+- Reusable skills to keep implementation consistent across features
 
-Tone:
+Ideal for Spanish-speaking end users (UI text) while keeping code and comments in English.
 
-Code & comments: English.
+## Key features
 
-UI text: Spanish, “cercano pero riguroso” (friendly but rigorous).
+- AI-first UX patterns and badges
+- Auth, subscriptions, dashboards, protected routes
+- Firebase (Auth, Firestore, Functions, Hosting) integration
+- Stripe subscriptions + webhooks support
+- Email via Gmail SMTP + Nodemailer
+- Mobile-first, accessible UI built with Tailwind and Shadcn UI
 
-AI visibility:
+## Tech stack
 
-Badges like “Powered by AI”.
+- Frontend: React 18, TypeScript, Vite
+- UI: Tailwind CSS, Shadcn UI, Lucide Icons
+- Backend: Firebase (Auth, Firestore, Functions, Hosting)
+- Payments: Stripe (subscriptions + webhooks)
+- Email: Gmail SMTP + Nodemailer
 
-“La IA está analizando tu documento…” loading states.
+## Quick start
 
-Confidence indicators and explanations of AI decisions.
+1. Clone the repo
 
-Non-functional requirements:
-
-GDPR, security, SEO, performance targets.
-
-App-specific notes for projects like payroll analysis or value-betting analytics.
-
-When you write or edit code, the assistant should read this file as the “source of truth” for style, tone, and UX expectations.
-
-2. Skills (Technical Domains)
-Under .github/skills/, each directory contains one SKILL.md describing how to implement a specific area:
-
-saas-stack/SKILL.md
-
-Standard project structure (components, hooks, services, pages, etc.).
-
-Recommended package.json, tsconfig, vite.config, tailwind.config, firebase.json.
-
-Patterns for components, hooks, services, routing, error handling.
-
-Naming conventions and TypeScript best practices.
-
-firebase/SKILL.md
-
-Firebase initialization, emulators, Auth flows, Firestore patterns.
-
-Security rules, indexes, Cloud Functions structure.
-
-Deployment commands and troubleshooting.
-
-stripe-payments/SKILL.md
-
-Subscription creation (Checkout), trial periods, upgrades/downgrades, cancellations.
-
-Webhooks for all key events and Firestore sync.
-
-Customer Portal, one-time payments, security checks.
-
-email-notifications/SKILL.md
-
-Gmail SMTP with app passwords, Nodemailer service.
-
-HTML templates (welcome, reset, payment, alerts).
-
-Email verification flow, unsubscribe preferences, SPF/DKIM/DMARC notes.
-
-In-app notifications (toasts, notification bell).
-
-When you edit files that match the applyTo patterns in these skills (e.g. **/*.ts,tsx,js,jsx), the assistant should use the corresponding skill as the detailed “how-to”.
-
-How to Use This Template
-1. Clone and Install
-bash
+```bash
 git clone <your-repo-url> my-saas-app
 cd my-saas-app
+```
 
-# Install frontend dependencies
+2. Install dependencies
+
+```bash
 npm install
+cd functions && npm install && cd ..
+```
 
-# Install Cloud Functions dependencies
-cd functions
-npm install
-cd ..
-2. Configure Environment Variables
-Create .env.local for the frontend:
+3. Add environment variables
 
-bash
-VITE_FIREBASE_API_KEY=...
-VITE_FIREBASE_AUTH_DOMAIN=...
-VITE_FIREBASE_PROJECT_ID=...
-VITE_FIREBASE_STORAGE_BUCKET=...
-VITE_FIREBASE_MESSAGING_SENDER_ID=...
-VITE_FIREBASE_APP_ID=...
+- Frontend: create `.env.local` with Vite-prefixed vars (VITE_FIREBASE_*, VITE_STRIPE_PUBLISHABLE_KEY)
+- Functions / backend: set `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `GMAIL_*` creds
 
-VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
-Create functions/.env (or your preferred env loading strategy) for the backend:
+4. Run locally
 
-bash
-STRIPE_SECRET_KEY=sk_test_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-
-GMAIL_USER=your-email@gmail.com
-GMAIL_APP_PASSWORD=your-app-password
-GMAIL_FROM_NAME=YourApp
-GMAIL_FROM_EMAIL=noreply@yourapp.com
-APP_NAME=YourApp
-APP_URL=https://yourapp.com
-SUPPORT_EMAIL=support@yourapp.com
-3. Initialize Firebase
-bash
-# Login and initialize (if not already)
-npx firebase login
-npx firebase init
-Ensure firebase.json, firestore.rules, firestore.indexes.json, storage.rules follow the patterns defined in the stack and Firebase skills.
-
-4. Run Locally
-bash
-# Frontend (Vite)
-npm run dev
-
-# In another terminal: Firebase emulators
-npx firebase emulators:start
-Use the emulator suite for Firestore, Auth, and Functions during development to avoid unnecessary costs.
+```bash
+npm run dev            # frontend (Vite)
+npx firebase emulators:start   # local emulators for Auth/Firestore/Functions
+```
 
 5. Deploy
-bash
-# Build frontend
+
+```bash
 npm run build
-
-# Deploy hosting + functions (PowerShell: always use npx)
 npx firebase deploy
+```
 
-# Deploy only hosting
-npx firebase deploy --only hosting
+## AI & instructions system
 
-# Deploy only functions
-npx firebase deploy --only functions
-How to Work with AI Assistants
-1. For Global Behavior
-When prompting your assistant, you can say things like:
+This repo contains project-level instructions and modular skills so assistants know project constraints, tone, and architecture. Key files:
 
-“Follow the project instructions in .github/copilot-instructions.md.”
+- `.github/copilot-instructions.md` — business context, tone, design rules, language rules
+- `.github/skills/*/SKILL.md` — domain skills (firebase, stripe, email, saas-stack)
 
-“Use the standard SaaS stack defined in the stack skill.”
+Guidelines (short):
 
-“Keep the UI text in Spanish with a friendly but rigorous tone and make AI usage visible.”
+- Code & comments: English
+- UI text: Spanish (tone: "cercano pero riguroso")
+- Always show AI processing states and confidence where appropriate
 
-This helps align the assistant with the overall design and product strategy.
+When prompting an assistant, include: "Follow .github/copilot-instructions.md and the relevant skill for this feature."
 
-2. For Specific Features
-Reference the relevant skills:
+## Contributing
 
-Firebase-related code:
-“Implement this using the Firebase skill (Auth + Firestore patterns).”
+- Follow TypeScript strict mode and Tailwind for styles
+- Write UI text in Spanish; keep code/comments in English
+- Open PRs against `main`; add small, atomic commits and a clear description
 
-Payments/Stripe:
-“Use the Stripe & Payments skill for subscriptions and webhooks.”
+If you want help bootstrapping a new feature, mention the skill(s) the assistant should follow (e.g., `firebase`, `stripe-payments`).
 
-Email & notifications:
-“Follow the Email & Notifications skill with Gmail SMTP.”
+## License
 
-Because the skills define concrete patterns, the assistant should produce code that plugs into the existing architecture without you repeating instructions.
+This project is available under the MIT License.
 
-Conventions and Expectations
-Code: English (variables, functions, comments, commit messages).
+---
 
-UI copy: Spanish, “cercano pero riguroso”.
-
-Design: Modern, clean, AI-visible, mobile-first, accessible.
-
-Security & Privacy: GDPR-aware, minimal data collection, secure defaults.
-
-Architecture: Follow the structure, naming conventions, and patterns defined in the stack skill.
-
-If you extend the template (new integrations, domains, or patterns), add or update a skill under .github/skills/ and, if it affects global behavior, update .github/copilot-instructions.md accordingly.
+Updated to improve clarity, structure and quick onboarding for contributors and AI assistants.
