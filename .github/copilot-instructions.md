@@ -59,7 +59,7 @@ This is a modern B2C SaaS application built with AI-first principles. The projec
 ## Tech Stack (High-Level)
 
 ```
-Frontend:  React 18 + TypeScript + Vite + Tailwind CSS
+Frontend:  React 18 + TypeScript + Next.js + Tailwind CSS
 UI:        Shadcn UI + Lucide Icons + Sonner (toasts)
 Backend:   Firebase (Auth, Firestore, Functions, Hosting)
 Payments:  Stripe (subscriptions)
